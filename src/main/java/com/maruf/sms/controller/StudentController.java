@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,20 +17,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.maruf.sms.entity.Course;
 import com.maruf.sms.entity.Student;
+import com.maruf.sms.service.CourseService;
 import com.maruf.sms.service.StudentService;
 
 @Controller
 @RequestMapping("/students")
 public class StudentController {
 	
-	private StudentService studentService;
+	@Autowired
+	StudentService studentService;
 	
-	public StudentController(StudentService studentService)
-	{
-		super();
-		this.studentService = studentService;
-	}
+	@Autowired
+	CourseService courseService;
 	
 	@GetMapping("")
 	public String listStudent(Model model)
@@ -42,9 +43,11 @@ public class StudentController {
 	@GetMapping("new")
 	public String displayAddForm(Model model)
 	{
-		Student student = new Student();
 		
-		model.addAttribute("student",student);
+		List<Course> courses = courseService.getAllCourse();
+		
+		model.addAttribute("student",new Student());
+		model.addAttribute("courses",courses);
 		
 		return "students/new";
 	}

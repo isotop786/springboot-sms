@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Course</title>
+    <link th:replace="layouts :: css">
+</head>
+<body>
+    <nav th:replace="layouts :: nav"></nav>
+    
+    <div class="container">
+    	<div class="row my-3 justify-content-center">
+    		<h3 style="font-weight: 300;">Add New Course</h3>
+    	</div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                <form action="/courses/save" th:object="${course}" method="POST">
+                    <div class="form-group">
+                        <label for="">Course Name</label>
+                        <input type="text" name="title" class="form-control" id="title" th:field="*{title}">
+                       
+                    </div>
+                    <!--  <div class="form-group">
+                        <label for="">Students</label>
+                        <select name="" id="" th:field="*{students}" class="form-control">
+                            <option
+                            th:each="student : ${allStudents}" 
+                            th:value="${student.studentId}" 
+                            th:text="${student.firstName}"
+                            multiple="multiple"
+                            >
+                        </select>
+                    </div>-->
+           
+                    <div>
+                        <input type="submit" value="Submit" class="btn btn-primary btn-block">
+                    </div>
+                </form>
+            </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</body>
+</html>
