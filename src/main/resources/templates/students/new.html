@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Student</title>
+    <link th:replace="layouts :: css">
+</head>
+<body>
+    <nav th:replace="layouts :: nav"></nav>
+    
+    <div class="container">
+    	<div class="row my-3 justify-content-center">
+    		<h3 style="font-weight: 300;">Add New Student</h3>
+    	</div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                <form action="/students/save" th:object="${student}" method="POST">
+                    <div class="form-group">
+                        <label for="">First Name</label>
+                        <input type="text" name="firstname" class="form-control" id="firstname" th:field="*{firstName}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Last Name</label>
+                        <input type="text" name="lastName" class="form-control" id="" th:field="*{lastName}">
+                        <div th:if="${#fields.hasErrors('lastName')}" class="invalid-feedback" th:errors="*{lastName}"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="email" name="email" class="form-control" id="" th:field="*{email}">
+                          <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                        </div>
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit" class="btn btn-primary btn-block">
+                    </div>
+                </form>
+            </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</body>
+</html>
