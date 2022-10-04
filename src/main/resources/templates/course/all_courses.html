@@ -36,7 +36,7 @@
 					<tbody>
 						<tr th:each="course : ${courses}">
 							<td th:text="${course.title}" >
-							<td th:text="${course.students}" >
+							<td th:text="${course.students.size()}" >
 							<td style="display:flex; flex-direction:row;justify-content:space-between;">
 							<a class="btn btn-sm btn-warning">Update</a>
 							<!-- <a th:href="@{/students/delete/{id}(id=${student.studentId})}" class="btn btn-sm btn-danger">Delete</a> -->

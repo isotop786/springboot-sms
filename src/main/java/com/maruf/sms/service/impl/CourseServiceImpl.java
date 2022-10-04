@@ -47,5 +47,13 @@ public class CourseServiceImpl implements CourseService{
 		// TODO Auto-generated method stub
 		
 	}
+	
+//	@Override
+//	public int getStudentCount(Course course)
+//	{
+//		return courseRepo.count(course.getStudents().size());
+//	}
+
+
 
 }

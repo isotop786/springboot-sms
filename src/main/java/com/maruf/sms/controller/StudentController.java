@@ -69,9 +69,11 @@ public class StudentController {
 	@GetMapping("edit/{id}")
 	public String displayEditForm(@PathVariable Long id, Model model)
 	{
+		List<Course> courses = courseService.getAllCourse();
 		Student student =  studentService.getStudentById(id);
 
 		model.addAttribute("student",student);
+		model.addAttribute("courses",courses);
 		
 		return"students/edit-student";
 	}
@@ -86,6 +88,7 @@ public class StudentController {
 		existingStudent.setFirstName(student.getFirstName());
 		existingStudent.setLastName(student.getLastName());
 		existingStudent.setEmail(student.getEmail());
+		existingStudent.setCourse(student.getCourse());
 		
 		studentService.saveStudentData(existingStudent);
 		

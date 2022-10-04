@@ -43,6 +43,14 @@
                           <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
                         </div>
                     </div>
+                    
+                     <div class="form-group">
+                        <label for="">Course</label>
+                        <select name="course" id="" th:field="*{course}" class="form-control">
+                            <option th:each="course : ${courses}"  th:value="${course.courseId}" th:text="${course.title}">
+                        </select>
+                    </div>
+                    
                     <div>
                         <input type="submit" value="Update" class="btn btn-warning btn-block">
                     </div>

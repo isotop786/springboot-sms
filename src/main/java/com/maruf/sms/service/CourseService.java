@@ -15,5 +15,7 @@ public interface CourseService {
 	public Course updateCourseData(Course course);
 	
 	public void deleteCourse(Long id);
+	
+//	public int getStudentCount(Course course);
 
 }
